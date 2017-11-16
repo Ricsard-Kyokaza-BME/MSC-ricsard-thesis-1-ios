@@ -1,0 +1,9 @@
+platform :ios, '11.0'
+
+target 'sd-ios' do
+  use_frameworks!
+
+  # Pods for sd-ios
+    pod 'Feathers'
+    pod 'FeathersSwiftRest'
+end
