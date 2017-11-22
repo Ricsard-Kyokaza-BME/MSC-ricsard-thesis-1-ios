@@ -30,26 +30,31 @@ class OffersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.tableView.backgroundColor = Constants.primaryColor
 
         feathers = appDelegate.feathersRestApp
-        
         let offerService = feathers.service(path: "offers")
-        
         let query = Query().limit(100)
         
         offerService.request(.find(query: query))
             .on(value: { response in
-                print(response)
-                for(let offer in response.data) {
-                    
+                let jsonDecoder = JSONDecoder()
+                
+                for offer in response.data.value as! Array<[String: Any]> {
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: offer, options:  JSONSerialization.WritingOptions(rawValue: 0))
+                        jsonDecoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
+                        
+                        let newOffer = try jsonDecoder.decode(Offer.self, from: jsonData)
+                        self.offers.append(newOffer)
+                    } catch {
+                        print(error)
+                    }
                 }
+                
+                self.tableView.reloadData()
             })
             .start()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,23 +66,43 @@ class OffersTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return offers.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OfferTableViewCell", for: indexPath) as! OfferListTableViewCell
+        
+        cell.title?.text = offers[indexPath.section].title
+        
+        if let images = offers[indexPath.section].images, images.count > 0, let url = URL(string: Constants.fileServer + images[0]) {
+            ImageDownloader.downloadImage(url: url, imageView: cell.offerImage)
+        } else {
+            cell.offerImage.image = UIImage(named: "no_image")
+        }
+        
+        cell.descriptionTextView?.text = offers[indexPath.section].description
+        cell.descriptionTextView?.sizeToFit()
+        
+        if let price = offers[indexPath.section].price {
+            cell.price?.text = price + " Ft"
+        }
+        
+        cell.backgroundColor = UIColor.white
+        cell.tintColor = Constants.primaryColor
+        cell.layer.borderColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.15).cgColor
+        cell.layer.borderWidth = 2
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -114,14 +139,14 @@ class OffersTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //   MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "OfferDetailSegue" {
+            let vc = segue.destination as? OfferDetailViewController
+            let section = tableView.indexPathForSelectedRow?.section
+            vc?.offer = offers[section!]
+        }
     }
-    */
 
 }

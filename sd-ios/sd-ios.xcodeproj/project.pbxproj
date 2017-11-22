@@ -16,6 +16,11 @@
 		F3371E1B1FBD9FAB0038FB26 /* sd_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3371E191FBD9FAB0038FB26 /* sd_ios.xcdatamodeld */; };
 		F3371E1D1FBD9FAB0038FB26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3371E1C1FBD9FAB0038FB26 /* Assets.xcassets */; };
 		F3371E201FBD9FAB0038FB26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3371E1E1FBD9FAB0038FB26 /* LaunchScreen.storyboard */; };
+		F3BCE9231FC1875F00E335AC /* OfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BCE9221FC1875F00E335AC /* OfferDetailViewController.swift */; };
+		F3BCE9251FC1A77200E335AC /* OfferListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BCE9241FC1A77200E335AC /* OfferListTableViewCell.swift */; };
+		F3FA50FF1FC5F492006314BD /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA50FE1FC5F492006314BD /* ImageDownloader.swift */; };
+		F3FA51011FC5F671006314BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA51001FC5F671006314BD /* Constants.swift */; };
+		F3FA51031FC5FD0B006314BD /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA51021FC5FD0B006314BD /* AuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,11 @@
 		F3371E1C1FBD9FAB0038FB26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3371E1F1FBD9FAB0038FB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3371E211FBD9FAB0038FB26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3BCE9221FC1875F00E335AC /* OfferDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
+		F3BCE9241FC1A77200E335AC /* OfferListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferListTableViewCell.swift; sourceTree = "<group>"; };
+		F3FA50FE1FC5F492006314BD /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		F3FA51001FC5F671006314BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F3FA51021FC5FD0B006314BD /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +103,11 @@
 				F3221BB41FBDD08200C0CEA0 /* HomeTabBarController.swift */,
 				F3221BB61FBDD3C500C0CEA0 /* OffersTableViewController.swift */,
 				F3221BB81FBDD46B00C0CEA0 /* Offer.model.swift */,
+				F3BCE9221FC1875F00E335AC /* OfferDetailViewController.swift */,
+				F3BCE9241FC1A77200E335AC /* OfferListTableViewCell.swift */,
+				F3FA50FE1FC5F492006314BD /* ImageDownloader.swift */,
+				F3FA51001FC5F671006314BD /* Constants.swift */,
+				F3FA51021FC5FD0B006314BD /* AuthManager.swift */,
 			);
 			path = "sd-ios";
 			sourceTree = "<group>";
@@ -236,11 +251,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3BCE9251FC1A77200E335AC /* OfferListTableViewCell.swift in Sources */,
 				F3371E1B1FBD9FAB0038FB26 /* sd_ios.xcdatamodeld in Sources */,
+				F3FA50FF1FC5F492006314BD /* ImageDownloader.swift in Sources */,
 				F3221BB91FBDD46B00C0CEA0 /* Offer.model.swift in Sources */,
 				F3371E131FBD9FAB0038FB26 /* AppDelegate.swift in Sources */,
 				F3221BB71FBDD3C500C0CEA0 /* OffersTableViewController.swift in Sources */,
+				F3BCE9231FC1875F00E335AC /* OfferDetailViewController.swift in Sources */,
 				F3221BB51FBDD08200C0CEA0 /* HomeTabBarController.swift in Sources */,
+				F3FA51011FC5F671006314BD /* Constants.swift in Sources */,
+				F3FA51031FC5FD0B006314BD /* AuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

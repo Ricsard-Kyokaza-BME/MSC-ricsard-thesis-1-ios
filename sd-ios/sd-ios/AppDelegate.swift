@@ -15,18 +15,21 @@ import FeathersSwiftRest
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let feathersRestApp = Feathers(provider: RestProvider(baseURL: URL(string: "https://dev-balogotthon.ddns.net/api")!))
+    let feathersRestApp = Feathers(provider: RestProvider(baseURL: URL(string: Constants.api)!))
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        feathersRestApp.authenticate([
-            "strategy": "local",
-            "email": "a@a.com",
-            "password": "abcd"
-            ]).on(value: { response in
-                print(response)
+        
+        UINavigationBar.appearance().barTintColor = Constants.primaryColor
+        UINavigationBar.appearance().barStyle = UIBarStyle.black
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        
+        AuthManager.manager.signIn(email: "a@a.com", password: "abcd")
+        
+        AuthManager.manager.addListenerToSignInStatusChange(listener: { isSignedIn -> Void in
+                print(isSignedIn)
             })
-            .start()
+        
         return true
     }
 
@@ -99,5 +102,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+// String Date formatter
+extension Formatter {
+    static let iso8601: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        return formatter
+    }()
+    static let iso8601withoutMS: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXXXX"
+        return formatter
+    }()
 }
 
