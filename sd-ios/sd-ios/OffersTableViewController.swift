@@ -15,7 +15,7 @@ class OffersTableViewController: UITableViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var feathers: Feathers
     var offers: [Offer]
-    
+  
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         feathers = appDelegate.feathersRestApp
         offers = []
@@ -31,7 +31,7 @@ class OffersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.tableView.backgroundColor = Constants.primaryColor
-
+      
         feathers = appDelegate.feathersRestApp
         let offerService = feathers.service(path: "offers")
         let query = Query().limit(100)
@@ -56,6 +56,7 @@ class OffersTableViewController: UITableViewController {
             })
             .start()
     }
+  
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

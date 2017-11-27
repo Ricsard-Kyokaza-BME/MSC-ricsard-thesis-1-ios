@@ -8,6 +8,7 @@
 
 import Foundation
 import Feathers
+import JWTDecode
 
 class AuthManager {
     
@@ -17,6 +18,7 @@ class AuthManager {
     var isSignedIn: Bool
     let feathers: Feathers
     var signInStatusChangeListeners: [(_ isSignedIn: Bool) -> Void]
+    var signedInUser: User?
     
     // MARK: - Init
     
@@ -35,8 +37,12 @@ class AuthManager {
             "password": password
             ]).on(value: { response in
                 if response["accessToken"] != nil {
-                    self.isSignedIn = true
-                    self.notifySignInStatusChangeListeners(isSignedIn: true)
+                    do {
+                        let jwt = try decode(jwt: response["accessToken"] as! String)
+                        self.requestSignedInUser(jwt.body["userId"] as! String)
+                    } catch {
+                        print("Failed to decode JWT: \(error)")
+                    }
                 }
             })
             .start()
@@ -46,6 +52,39 @@ class AuthManager {
         feathers.logout().on(value: { response in
                 self.isSignedIn = true
                 self.notifySignInStatusChangeListeners(isSignedIn: false)
+            })
+            .start()
+    }
+    
+    func getSignedInUser() -> User? {
+        if let user = signedInUser {
+            return user
+        }
+        
+        return nil
+    }
+    
+    private func requestSignedInUser(_ userId: String) -> Void {
+        let userService = feathers.service(path: "users")
+        let query = Query().eq(property: "_id", value: userId)
+        
+        userService.request(.find(query: query))
+            .on(value: { response in
+                let jsonDecoder = JSONDecoder()
+
+                for user in response.data.value as! Array<[String: Any]> {
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: user, options:  JSONSerialization.WritingOptions(rawValue: 0))
+                        jsonDecoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
+
+                        self.signedInUser = try jsonDecoder.decode(User.self, from: jsonData)
+                    } catch {
+                        print(error)
+                    }
+                }
+                
+                self.isSignedIn = true
+                self.notifySignInStatusChangeListeners(isSignedIn: true)
             })
             .start()
     }

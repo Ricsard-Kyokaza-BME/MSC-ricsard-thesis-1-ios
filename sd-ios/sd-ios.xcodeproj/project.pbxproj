@@ -11,6 +11,7 @@
 		F3221BB51FBDD08200C0CEA0 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3221BB41FBDD08200C0CEA0 /* HomeTabBarController.swift */; };
 		F3221BB71FBDD3C500C0CEA0 /* OffersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3221BB61FBDD3C500C0CEA0 /* OffersTableViewController.swift */; };
 		F3221BB91FBDD46B00C0CEA0 /* Offer.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3221BB81FBDD46B00C0CEA0 /* Offer.model.swift */; };
+		F32CFC121FCC97A100410B32 /* User.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32CFC111FCC97A100410B32 /* User.model.swift */; };
 		F3371E131FBD9FAB0038FB26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3371E121FBD9FAB0038FB26 /* AppDelegate.swift */; };
 		F3371E181FBD9FAB0038FB26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3371E161FBD9FAB0038FB26 /* Main.storyboard */; };
 		F3371E1B1FBD9FAB0038FB26 /* sd_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3371E191FBD9FAB0038FB26 /* sd_ios.xcdatamodeld */; };
@@ -18,6 +19,9 @@
 		F3371E201FBD9FAB0038FB26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3371E1E1FBD9FAB0038FB26 /* LaunchScreen.storyboard */; };
 		F3BCE9231FC1875F00E335AC /* OfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BCE9221FC1875F00E335AC /* OfferDetailViewController.swift */; };
 		F3BCE9251FC1A77200E335AC /* OfferListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BCE9241FC1A77200E335AC /* OfferListTableViewCell.swift */; };
+		F3F839C41FCAD9700043A14D /* CategoryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F839C31FCAD9700043A14D /* CategoryFilterViewController.swift */; };
+		F3F839C61FCB161D0043A14D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F839C51FCB161D0043A14D /* LoginViewController.swift */; };
+		F3F839C81FCB19F00043A14D /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F839C71FCB19F00043A14D /* MeViewController.swift */; };
 		F3FA50FF1FC5F492006314BD /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA50FE1FC5F492006314BD /* ImageDownloader.swift */; };
 		F3FA51011FC5F671006314BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA51001FC5F671006314BD /* Constants.swift */; };
 		F3FA51031FC5FD0B006314BD /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA51021FC5FD0B006314BD /* AuthManager.swift */; };
@@ -30,6 +34,7 @@
 		F3221BB41FBDD08200C0CEA0 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		F3221BB61FBDD3C500C0CEA0 /* OffersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersTableViewController.swift; sourceTree = "<group>"; };
 		F3221BB81FBDD46B00C0CEA0 /* Offer.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.model.swift; sourceTree = "<group>"; };
+		F32CFC111FCC97A100410B32 /* User.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.model.swift; sourceTree = "<group>"; };
 		F3371E0F1FBD9FAB0038FB26 /* sd-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sd-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3371E121FBD9FAB0038FB26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3371E171FBD9FAB0038FB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -39,6 +44,9 @@
 		F3371E211FBD9FAB0038FB26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3BCE9221FC1875F00E335AC /* OfferDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
 		F3BCE9241FC1A77200E335AC /* OfferListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferListTableViewCell.swift; sourceTree = "<group>"; };
+		F3F839C31FCAD9700043A14D /* CategoryFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterViewController.swift; sourceTree = "<group>"; };
+		F3F839C51FCB161D0043A14D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F3F839C71FCB19F00043A14D /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		F3FA50FE1FC5F492006314BD /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		F3FA51001FC5F671006314BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F3FA51021FC5FD0B006314BD /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -108,6 +116,10 @@
 				F3FA50FE1FC5F492006314BD /* ImageDownloader.swift */,
 				F3FA51001FC5F671006314BD /* Constants.swift */,
 				F3FA51021FC5FD0B006314BD /* AuthManager.swift */,
+				F3F839C31FCAD9700043A14D /* CategoryFilterViewController.swift */,
+				F3F839C51FCB161D0043A14D /* LoginViewController.swift */,
+				F3F839C71FCB19F00043A14D /* MeViewController.swift */,
+				F32CFC111FCC97A100410B32 /* User.model.swift */,
 			);
 			path = "sd-ios";
 			sourceTree = "<group>";
@@ -211,6 +223,8 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Feathers/Feathers.framework",
 				"${BUILT_PRODUCTS_DIR}/FeathersSwiftRest/FeathersSwiftRest.framework",
+				"${BUILT_PRODUCTS_DIR}/JSONWebToken/JWT.framework",
+				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -220,6 +234,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Feathers.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeathersSwiftRest.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
@@ -251,9 +267,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3F839C81FCB19F00043A14D /* MeViewController.swift in Sources */,
+				F3F839C61FCB161D0043A14D /* LoginViewController.swift in Sources */,
 				F3BCE9251FC1A77200E335AC /* OfferListTableViewCell.swift in Sources */,
+				F32CFC121FCC97A100410B32 /* User.model.swift in Sources */,
 				F3371E1B1FBD9FAB0038FB26 /* sd_ios.xcdatamodeld in Sources */,
 				F3FA50FF1FC5F492006314BD /* ImageDownloader.swift in Sources */,
+				F3F839C41FCAD9700043A14D /* CategoryFilterViewController.swift in Sources */,
 				F3221BB91FBDD46B00C0CEA0 /* Offer.model.swift in Sources */,
 				F3371E131FBD9FAB0038FB26 /* AppDelegate.swift in Sources */,
 				F3221BB71FBDD3C500C0CEA0 /* OffersTableViewController.swift in Sources */,

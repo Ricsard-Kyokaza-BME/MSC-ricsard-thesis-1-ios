@@ -6,4 +6,6 @@ target 'sd-ios' do
   # Pods for sd-ios
     pod 'Feathers'
     pod 'FeathersSwiftRest'
+    pod 'JSONWebToken'
+    pod 'JWTDecode', '~> 2.1'
 end
