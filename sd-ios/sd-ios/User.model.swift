@@ -10,6 +10,8 @@ import Foundation
 
 class User: Codable, CustomDebugStringConvertible {
     
+    var __v: Int
+    var _id: String
     var firstName: String
     var lastName: String
     var email: String
@@ -18,7 +20,9 @@ class User: Codable, CustomDebugStringConvertible {
     var createdAt: Date
     var updatedAt: Date
     
-    init(_ firstName: String, lastName: String, email: String, roles: [String], createdAt: Date, updatedAt: Date ) {
+    init(_ __v: Int, id: String, firstName: String, lastName: String, email: String, roles: [String], createdAt: Date, updatedAt: Date ) {
+        self.__v = __v
+        self._id = id
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
@@ -28,6 +32,15 @@ class User: Codable, CustomDebugStringConvertible {
     }
     
     var debugDescription: String {
-        return "User: \nfirstName: \(firstName), lastName: \(lastName), email: \(email), roles: \(roles), createdAt: \(String(describing: createdAt)), updatedAt: \(String(describing: updatedAt))"
+        return "User: \nid: \(_id), firstName: \(firstName), lastName: \(lastName), email: \(email), roles: \(roles), createdAt: \(String(describing: createdAt)), updatedAt: \(String(describing: updatedAt))"
     }
+    
+        func toData() -> [String: Any] {
+            var dictionary = [String: Any]()
+    
+            dictionary["firstName"] = firstName
+            dictionary["lastName"] = lastName
+    
+            return dictionary
+        }
 }

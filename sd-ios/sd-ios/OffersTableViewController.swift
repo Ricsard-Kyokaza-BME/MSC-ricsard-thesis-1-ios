@@ -42,7 +42,7 @@ class OffersTableViewController: UITableViewController {
                 
                 for offer in response.data.value as! Array<[String: Any]> {
                     do {
-                        let jsonData = try JSONSerialization.data(withJSONObject: offer, options:  JSONSerialization.WritingOptions(rawValue: 0))
+                        let jsonData = try JSONSerialization.data(withJSONObject: offer, options: JSONSerialization.WritingOptions(rawValue: 0))
                         jsonDecoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
                         
                         let newOffer = try jsonDecoder.decode(Offer.self, from: jsonData)

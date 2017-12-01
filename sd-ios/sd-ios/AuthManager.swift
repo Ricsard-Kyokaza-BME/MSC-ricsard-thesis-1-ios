@@ -19,6 +19,7 @@ class AuthManager {
     let feathers: Feathers
     var signInStatusChangeListeners: [(_ isSignedIn: Bool) -> Void]
     var signedInUser: User?
+    var accessToken: String?
     
     // MARK: - Init
     
@@ -38,6 +39,8 @@ class AuthManager {
             ]).on(value: { response in
                 if response["accessToken"] != nil {
                     do {
+                        print(response["accessToken"])
+                        self.accessToken = response["accessToken"] as! String
                         let jwt = try decode(jwt: response["accessToken"] as! String)
                         self.requestSignedInUser(jwt.body["userId"] as! String)
                     } catch {
@@ -57,6 +60,7 @@ class AuthManager {
     }
     
     func getSignedInUser() -> User? {
+        print(signedInUser)
         if let user = signedInUser {
             return user
         }

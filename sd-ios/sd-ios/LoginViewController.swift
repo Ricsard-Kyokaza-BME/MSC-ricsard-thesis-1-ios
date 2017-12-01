@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    var user: User?
     
     
     override func viewDidLoad() {
@@ -28,12 +29,17 @@ class LoginViewController: UIViewController {
     @IBAction func loginTouchUpInside(_ sender: Any) {
         if let email = emailTextField.text, let password = passwordTextField.text {
             AuthManager.manager.signIn(email: email, password: password)
+            AuthManager.manager.addListenerToSignInStatusChange(listener: { (isSignedIn) in
+                if(isSignedIn) {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
         }
     }
     
     @IBAction func cancelClick(_ sender: Any) {
-        if let presenter = presentingViewController as? MeViewController {
-            presenter.tabBarController?.selectedIndex = 1
+        if let presenter = presentingViewController as? HomeTabBarController {
+            presenter.selectedIndex = 0
         }
         dismiss(animated: true, completion: nil)
     }

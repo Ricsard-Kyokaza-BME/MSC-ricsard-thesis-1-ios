@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         
 //        AuthManager.manager.signIn(email: "a@a.com", password: "abcd")
+        AuthManager.manager.signIn(email: "t1@t1.com", password: "abcd")
         
         AuthManager.manager.addListenerToSignInStatusChange(listener: { isSignedIn -> Void in
                 print(isSignedIn)
