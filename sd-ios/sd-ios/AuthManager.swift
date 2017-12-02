@@ -18,8 +18,8 @@ class AuthManager {
     var isSignedIn: Bool
     let feathers: Feathers
     var signInStatusChangeListeners: [(_ isSignedIn: Bool) -> Void]
-    var signedInUser: User?
-    var accessToken: String?
+    private var signedInUser: User?
+    private var accessToken: String?
     
     // MARK: - Init
     
@@ -39,7 +39,6 @@ class AuthManager {
             ]).on(value: { response in
                 if response["accessToken"] != nil {
                     do {
-                        print(response["accessToken"])
                         self.accessToken = response["accessToken"] as! String
                         let jwt = try decode(jwt: response["accessToken"] as! String)
                         self.requestSignedInUser(jwt.body["userId"] as! String)
@@ -60,16 +59,17 @@ class AuthManager {
     }
     
     func getSignedInUser() -> User? {
-        print(signedInUser)
-        if let user = signedInUser {
-            return user
-        }
-        
+        if let user = signedInUser { return user }
+        return nil
+    }
+    
+    func getAccessToken() -> String? {
+        if let ac = accessToken { return ac }
         return nil
     }
     
     private func requestSignedInUser(_ userId: String) -> Void {
-        let userService = feathers.service(path: "users")
+        let userService = feathers.service(path: Constants.userService)
         let query = Query().eq(property: "_id", value: userId)
         
         userService.request(.find(query: query))

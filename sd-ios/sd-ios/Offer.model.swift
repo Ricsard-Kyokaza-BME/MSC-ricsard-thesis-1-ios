@@ -10,6 +10,7 @@ import Foundation
 
 class Offer: Codable, CustomDebugStringConvertible {
     
+    var _id: String?
     var title: String
     var description: String?
     var price: String?
@@ -21,7 +22,8 @@ class Offer: Codable, CustomDebugStringConvertible {
     var createdAt: Date
     var updatedAt: Date
     
-    init(_ title: String, description: String?, price: String?, categories: [String]?, owner: String, images: [String]?, address: String?, coordinates: [Double]?, createdAt: Date, updatedAt: Date ) {
+    init(_ _id: String?, title: String, description: String?, price: String?, categories: [String]?, owner: String, images: [String]?, address: String?, coordinates: [Double]?, createdAt: Date, updatedAt: Date ) {
+        self._id = _id
         self.title = title
         self.description = description
         self.price = price
@@ -35,21 +37,6 @@ class Offer: Codable, CustomDebugStringConvertible {
     }
     
     var debugDescription: String {
-        return "Offer: \ntitle: \(title), description: \(String(describing: description)), price: \(String(describing: price)), categories: \(String(describing: categories)), owner: \(owner), images: \(String(describing: images)), address: \(String(describing: address)), coordinates: \(String(describing: coordinates)), createdAt: \(String(describing: createdAt)), updatedAt: \(String(describing: updatedAt))"
+        return "Offer: \nid: \(_id), title: \(title), description: \(String(describing: description)), price: \(String(describing: price)), categories: \(String(describing: categories)), owner: \(owner), images: \(String(describing: images)), address: \(String(describing: address)), coordinates: \(String(describing: coordinates)), createdAt: \(String(describing: createdAt)), updatedAt: \(String(describing: updatedAt))"
     }
-    
-//    init?(json: [String: Any]) {
-//        guard let title = json["title"] as? String else {
-//                return nil
-//        }
-//        self.title = title
-//    }
-    
-//    func toData() -> [String: Any] {
-//        var dictionary = [String: Any]()
-//        
-//        dictionary["title"] = title
-//        
-//        return dictionary
-//    }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		52A61B1162270E810CCDDFDC /* Pods_sd_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B67CEA56FF0770C408D44F8 /* Pods_sd_ios.framework */; };
+		F3073E081FD2A29B0057436C /* MyOffersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3073E071FD2A29B0057436C /* MyOffersTableViewController.swift */; };
 		F3221BB51FBDD08200C0CEA0 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3221BB41FBDD08200C0CEA0 /* HomeTabBarController.swift */; };
 		F3221BB71FBDD3C500C0CEA0 /* OffersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3221BB61FBDD3C500C0CEA0 /* OffersTableViewController.swift */; };
 		F3221BB91FBDD46B00C0CEA0 /* Offer.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3221BB81FBDD46B00C0CEA0 /* Offer.model.swift */; };
@@ -19,6 +20,10 @@
 		F3371E201FBD9FAB0038FB26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3371E1E1FBD9FAB0038FB26 /* LaunchScreen.storyboard */; };
 		F3BCE9231FC1875F00E335AC /* OfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BCE9221FC1875F00E335AC /* OfferDetailViewController.swift */; };
 		F3BCE9251FC1A77200E335AC /* OfferListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BCE9241FC1A77200E335AC /* OfferListTableViewCell.swift */; };
+		F3C89C6B1FD2ACED00537A93 /* MyOffersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C89C6A1FD2ACED00537A93 /* MyOffersTableViewCell.swift */; };
+		F3C89C6D1FD2BB4200537A93 /* EditOfferTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C89C6C1FD2BB4200537A93 /* EditOfferTableViewController.swift */; };
+		F3CB5AE71FD316FD00F0299E /* CategorySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB5AE61FD316FD00F0299E /* CategorySelectorViewController.swift */; };
+		F3CB5AE91FD3170D00F0299E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB5AE81FD3170D00F0299E /* Category.swift */; };
 		F3F839C41FCAD9700043A14D /* CategoryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F839C31FCAD9700043A14D /* CategoryFilterViewController.swift */; };
 		F3F839C61FCB161D0043A14D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F839C51FCB161D0043A14D /* LoginViewController.swift */; };
 		F3F839C81FCB19F00043A14D /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F839C71FCB19F00043A14D /* MeViewController.swift */; };
@@ -31,6 +36,7 @@
 		61C093507E6767F811810342 /* Pods-sd-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sd-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-sd-ios/Pods-sd-ios.release.xcconfig"; sourceTree = "<group>"; };
 		6B67CEA56FF0770C408D44F8 /* Pods_sd_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sd_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C66825870346A7F40CEC36 /* Pods-sd-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sd-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sd-ios/Pods-sd-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		F3073E071FD2A29B0057436C /* MyOffersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOffersTableViewController.swift; sourceTree = "<group>"; };
 		F3221BB41FBDD08200C0CEA0 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		F3221BB61FBDD3C500C0CEA0 /* OffersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersTableViewController.swift; sourceTree = "<group>"; };
 		F3221BB81FBDD46B00C0CEA0 /* Offer.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.model.swift; sourceTree = "<group>"; };
@@ -44,6 +50,10 @@
 		F3371E211FBD9FAB0038FB26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3BCE9221FC1875F00E335AC /* OfferDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
 		F3BCE9241FC1A77200E335AC /* OfferListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferListTableViewCell.swift; sourceTree = "<group>"; };
+		F3C89C6A1FD2ACED00537A93 /* MyOffersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOffersTableViewCell.swift; sourceTree = "<group>"; };
+		F3C89C6C1FD2BB4200537A93 /* EditOfferTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOfferTableViewController.swift; sourceTree = "<group>"; };
+		F3CB5AE61FD316FD00F0299E /* CategorySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectorViewController.swift; sourceTree = "<group>"; };
+		F3CB5AE81FD3170D00F0299E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F3F839C31FCAD9700043A14D /* CategoryFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterViewController.swift; sourceTree = "<group>"; };
 		F3F839C51FCB161D0043A14D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F3F839C71FCB19F00043A14D /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +130,11 @@
 				F3F839C51FCB161D0043A14D /* LoginViewController.swift */,
 				F3F839C71FCB19F00043A14D /* MeViewController.swift */,
 				F32CFC111FCC97A100410B32 /* User.model.swift */,
+				F3073E071FD2A29B0057436C /* MyOffersTableViewController.swift */,
+				F3C89C6A1FD2ACED00537A93 /* MyOffersTableViewCell.swift */,
+				F3C89C6C1FD2BB4200537A93 /* EditOfferTableViewController.swift */,
+				F3CB5AE61FD316FD00F0299E /* CategorySelectorViewController.swift */,
+				F3CB5AE81FD3170D00F0299E /* Category.swift */,
 			);
 			path = "sd-ios";
 			sourceTree = "<group>";
@@ -269,17 +284,22 @@
 			files = (
 				F3F839C81FCB19F00043A14D /* MeViewController.swift in Sources */,
 				F3F839C61FCB161D0043A14D /* LoginViewController.swift in Sources */,
+				F3CB5AE91FD3170D00F0299E /* Category.swift in Sources */,
 				F3BCE9251FC1A77200E335AC /* OfferListTableViewCell.swift in Sources */,
 				F32CFC121FCC97A100410B32 /* User.model.swift in Sources */,
+				F3C89C6B1FD2ACED00537A93 /* MyOffersTableViewCell.swift in Sources */,
 				F3371E1B1FBD9FAB0038FB26 /* sd_ios.xcdatamodeld in Sources */,
 				F3FA50FF1FC5F492006314BD /* ImageDownloader.swift in Sources */,
 				F3F839C41FCAD9700043A14D /* CategoryFilterViewController.swift in Sources */,
 				F3221BB91FBDD46B00C0CEA0 /* Offer.model.swift in Sources */,
 				F3371E131FBD9FAB0038FB26 /* AppDelegate.swift in Sources */,
+				F3C89C6D1FD2BB4200537A93 /* EditOfferTableViewController.swift in Sources */,
 				F3221BB71FBDD3C500C0CEA0 /* OffersTableViewController.swift in Sources */,
 				F3BCE9231FC1875F00E335AC /* OfferDetailViewController.swift in Sources */,
 				F3221BB51FBDD08200C0CEA0 /* HomeTabBarController.swift in Sources */,
 				F3FA51011FC5F671006314BD /* Constants.swift in Sources */,
+				F3CB5AE71FD316FD00F0299E /* CategorySelectorViewController.swift in Sources */,
+				F3073E081FD2A29B0057436C /* MyOffersTableViewController.swift in Sources */,
 				F3FA51031FC5FD0B006314BD /* AuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

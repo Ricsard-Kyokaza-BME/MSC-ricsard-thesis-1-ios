@@ -14,7 +14,9 @@ class OffersTableViewController: UITableViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var feathers: Feathers
+    var allOffers = [Offer]()
     var offers: [Offer]
+    var selectedCategories = [String: Bool]()
   
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         feathers = appDelegate.feathersRestApp
@@ -30,14 +32,20 @@ class OffersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.tableView.backgroundColor = Constants.primaryColor
-      
+        
+        getCategories()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         feathers = appDelegate.feathersRestApp
-        let offerService = feathers.service(path: "offers")
+        let offerService = feathers.service(path: Constants.offerService)
         let query = Query().limit(100)
         
         offerService.request(.find(query: query))
             .on(value: { response in
+                self.offers = []
                 let jsonDecoder = JSONDecoder()
                 
                 for offer in response.data.value as! Array<[String: Any]> {
@@ -47,31 +55,48 @@ class OffersTableViewController: UITableViewController {
                         
                         let newOffer = try jsonDecoder.decode(Offer.self, from: jsonData)
                         self.offers.append(newOffer)
+                        self.allOffers.append(newOffer)
                     } catch {
                         print(error)
                     }
+                }
+                
+                if(self.selectedCategories.count > 0) {
+                    self.filterOffers()
                 }
                 
                 self.tableView.reloadData()
             })
             .start()
     }
-  
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func filterOffers() -> Void {
+        let selectedCategoriesList = self.getSelectedCategoriesList()
+        self.offers = self.offers.filter({ (offer) -> Bool in
+            for category in selectedCategoriesList {
+                if(offer.categories?.contains(category))! {
+                    return true
+                }
+            }
+            return false
+        })
+    }
+    
+    func getSelectedCategoriesList() -> [String] {
+        return selectedCategories.filter({ (key: String, value: Bool) -> Bool in
+            return value
+        }).map({ (key: String, value: Bool) -> String in
+            return key
+        })
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return offers.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 1
     }
 
@@ -104,41 +129,30 @@ class OffersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 5
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func getCategories() {
+        let categoryService = feathers.service(path: Constants.categoryService)
+        let query = Query().limit(100)
+        
+        categoryService.request(.find(query: query))
+            .on(value: { response in
+                let jsonDecoder = JSONDecoder()
+                
+                for category in response.data.value as! Array<[String: Any]> {
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: category, options:  JSONSerialization.WritingOptions(rawValue: 0))
+                        jsonDecoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
+                        
+                        let decodedCategory = try jsonDecoder.decode(Category.self, from: jsonData)
+                        
+                        self.selectedCategories[decodedCategory._id] = true
+                    } catch {
+                        print(error)
+                    }
+                }
+            })
+            .start()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     //   MARK: - Navigation
     
@@ -147,7 +161,10 @@ class OffersTableViewController: UITableViewController {
             let vc = segue.destination as? OfferDetailViewController
             let section = tableView.indexPathForSelectedRow?.section
             vc?.offer = offers[section!]
+        } else if segue.identifier == "OffersCategorySelectorSegue" {
+            let vc = segue.destination as? CategorySelectorViewController
+            vc?.selectedCategories = self.selectedCategories
+            vc?.parentOffersVC = self
         }
     }
-
 }
