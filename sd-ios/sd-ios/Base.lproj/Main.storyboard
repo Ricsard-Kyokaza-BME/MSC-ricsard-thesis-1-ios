@@ -53,7 +53,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tLj-2k-BFt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2389" y="-1374"/>
+            <point key="canvasLocation" x="2406" y="-671"/>
         </scene>
         <!--Offers-->
         <scene sceneID="xhk-Lx-PpG">
@@ -143,7 +143,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFR-ce-7Vs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2388.75" y="-601.05633802816897"/>
+            <point key="canvasLocation" x="2406" y="-1477"/>
         </scene>
         <!--My Offers-->
         <scene sceneID="dsf-oZ-yr3">
@@ -505,7 +505,7 @@
         <scene sceneID="NiY-OK-6RP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ttw-zw-KmY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Offers" id="35l-V5-hrz"/>
+                    <tabBarItem key="tabBarItem" title="My Offers" image="my-offers-icon" id="35l-V5-hrz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oRe-DK-ohl">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -615,7 +615,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gca-af-Otl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3465" y="-601"/>
+            <point key="canvasLocation" x="3482" y="-1477"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="oBc-cc-EDf">
@@ -794,28 +794,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Role" id="vK9-H7-Z43">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="180" id="eJt-fm-usE">
-                                        <rect key="frame" x="0.0" y="244" width="320" height="180"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eJt-fm-usE" id="LvY-FA-2jD">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="179.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FO3-q7-65a">
-                                                    <rect key="frame" x="0.0" y="11" width="320" height="162"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                </pickerView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="AS2-nh-155">
+                            <tableViewSection headerTitle="Logout" id="AS2-nh-155">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="S1s-Pa-9M6">
-                                        <rect key="frame" x="0.0" y="424" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="244" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S1s-Pa-9M6" id="Tf0-yD-Qu8">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -824,9 +806,31 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTe-vR-yFA">
                                                     <rect key="frame" x="16" y="11" width="288" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Logout"/>
+                                                    <connections>
+                                                        <action selector="logoutClick:" destination="uzx-W2-Vhg" eventType="touchUpInside" id="LvD-iu-L6u"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Action" id="eHH-za-E7N">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CSx-vZ-A9d">
+                                        <rect key="frame" x="0.0" y="316" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CSx-vZ-A9d" id="XyL-pf-tb9">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUd-CO-PQk">
+                                                    <rect key="frame" x="16" y="11" width="288" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Save"/>
                                                     <connections>
-                                                        <action selector="saveTouchUpInside:" destination="uzx-W2-Vhg" eventType="touchUpInside" id="hMK-rp-bNs"/>
+                                                        <action selector="saveTouchUpInside:" destination="uzx-W2-Vhg" eventType="touchUpInside" id="mQL-PS-OS5"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -840,7 +844,7 @@
                             <outlet property="delegate" destination="uzx-W2-Vhg" id="Sq9-Mb-cQj"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Me" id="yyQ-Nu-Fmo"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="me-icon" id="yyQ-Nu-Fmo"/>
                     <connections>
                         <outlet property="emailTextField" destination="O1s-4q-fTq" id="xlU-DY-vmI"/>
                         <outlet property="firstNameTextField" destination="S6A-li-NYc" id="a9C-9i-ge5"/>
@@ -855,7 +859,7 @@
         <scene sceneID="rrN-pc-dvU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GQb-pG-VkT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Offers" id="47F-ey-HiS"/>
+                    <tabBarItem key="tabBarItem" title="Offers" image="offer-icon" id="47F-ey-HiS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2vE-AU-QH2">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -868,11 +872,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVW-t3-tgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1434.375" y="-601.05633802816897"/>
+            <point key="canvasLocation" x="1451" y="-1477"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="me-icon" width="29" height="29"/>
+        <image name="my-offers-icon" width="32" height="29"/>
+        <image name="offer-icon" width="29" height="29"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="S1f-vm-7tS"/>
-        <segue reference="AeH-pv-p6E"/>
+        <segue reference="0zb-WC-8de"/>
     </inferredMetricsTieBreakers>
 </document>

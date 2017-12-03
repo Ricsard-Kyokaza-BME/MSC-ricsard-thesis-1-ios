@@ -9,6 +9,7 @@
 import UIKit
 import Feathers
 import Alamofire
+import CoreData
 
 class MeViewController: UITableViewController {
     
@@ -53,12 +54,13 @@ class MeViewController: UITableViewController {
             request.httpBody = encodedUser
             
             URLSession.shared.dataTask(with: request) { data, response, error in
-                print("ehh")
                 if let error = error {
                     print("Error during comminication: \(error.localizedDescription).")
                     return
-                } else if let data = data {
-                    print(data)
+                } else if data != nil {
+                    DispatchQueue.main.async {
+                        self.tabBarController?.selectedIndex = 0
+                    }
                 }
             }.resume()
             
@@ -67,4 +69,18 @@ class MeViewController: UITableViewController {
         }
     }
 
+    @IBAction func logoutClick(_ sender: Any) {
+        AuthManager.manager.addListenerToSignInStatusChange { (isSignedIn) in
+            if(!isSignedIn) {
+                AppDelegate.deleteAllSignedInUserRecords()
+                
+                DispatchQueue.main.async {
+                    self.tabBarController?.selectedIndex = 0
+                }
+            }
+        }
+        AuthManager.manager.signOut()
+    }
+    
+    
 }

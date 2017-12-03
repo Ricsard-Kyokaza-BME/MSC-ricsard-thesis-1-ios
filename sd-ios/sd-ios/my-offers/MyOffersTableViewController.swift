@@ -85,7 +85,7 @@ class MyOffersTableViewController: UITableViewController {
         cell.backgroundColor = UIColor.white
         cell.tintColor = Constants.primaryColor
         cell.layer.borderColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.15).cgColor
-        cell.layer.borderWidth = 2
+        cell.layer.borderWidth = 1
         
         return cell
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController {
 
@@ -26,6 +27,11 @@ class LoginViewController: UIViewController {
             AuthManager.manager.signIn(email: email, password: password)
             AuthManager.manager.addListenerToSignInStatusChange(listener: { (isSignedIn) in
                 if(isSignedIn) {
+                    let signedInUser = NSEntityDescription.insertNewObject(forEntityName: "SignedInUser", into: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+                    signedInUser.setValue(email, forKey: "email")
+                    signedInUser.setValue(password, forKey: "password")
+                    (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                    
                     self.dismiss(animated: true, completion: nil)
                 }
             })

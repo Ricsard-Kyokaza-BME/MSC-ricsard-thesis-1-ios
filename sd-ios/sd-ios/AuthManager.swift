@@ -51,11 +51,10 @@ class AuthManager {
     }
     
     func signOut() {
-        feathers.logout().on(value: { response in
-                self.isSignedIn = true
-                self.notifySignInStatusChangeListeners(isSignedIn: false)
-            })
-            .start()
+        feathers.logout().start()
+        
+        self.isSignedIn = false
+        self.notifySignInStatusChangeListeners(isSignedIn: false)
     }
     
     func getSignedInUser() -> User? {

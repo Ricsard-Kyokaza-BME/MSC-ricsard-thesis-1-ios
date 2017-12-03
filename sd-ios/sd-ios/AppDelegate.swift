@@ -10,12 +10,16 @@ import UIKit
 import CoreData
 import Feathers
 import FeathersSwiftRest
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let feathersRestApp = Feathers(provider: RestProvider(baseURL: URL(string: Constants.api)!))
+    class var managedContext: NSManagedObjectContext {
+        return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -24,12 +28,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         
-        AuthManager.manager.signIn(email: "a@a.com", password: "abcd")
-//        AuthManager.manager.signIn(email: "y@y.com", password: "abcd")
-        
-        AuthManager.manager.addListenerToSignInStatusChange(listener: { isSignedIn -> Void in
-                print(isSignedIn)
-            })
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SignedInUser")
+        do {
+            let signedInUsers = try persistentContainer.viewContext.fetch(fetchRequest)
+            if(signedInUsers.count > 0) {
+                let email = signedInUsers[0].value(forKey: "email") as! String
+                let password = signedInUsers[0].value(forKey: "password") as! String
+                
+                AuthManager.manager.signIn(email: email, password: password)
+            }
+        } catch let error as NSError {
+            print("Couldn't fetch: \(error.userInfo)")
+        }
         
         return true
     }
@@ -100,6 +110,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        }
+    }
+    
+    static func deleteAllSignedInUserRecords() {
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "SignedInUser")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try managedContext.execute(deleteRequest)
+            try managedContext.save()
+        } catch {
+            print ("There was an error")
         }
     }
 
