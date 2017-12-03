@@ -20,6 +20,7 @@ class EditOfferTableViewController: UITableViewController {
     var offer: Offer?
     var isOfferEditing = false
     var feathers: Feathers
+    var selectedLocation: SelectedLocation?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         feathers = (UIApplication.shared.delegate as! AppDelegate).feathersRestApp
@@ -55,19 +56,6 @@ class EditOfferTableViewController: UITableViewController {
             titleTextField.text = offer.title
             descriptionTextView.text = offer.description
             priceTextField.text = offer.price
-//            if let coordinates = offer.coordinates {
-//                let location = CLLocationCoordinate2D(latitude: coordinates[0], longitude: coordinates[1])
-//                mapView.setCenter(location, animated: true)
-//
-//                let viewRegion = MKCoordinateRegionMakeWithDistance(location, 300, 300)
-//                mapView.setRegion(viewRegion, animated: false)
-//
-//                let locationAnnotation = MKPointAnnotation()
-//                locationAnnotation.coordinate = location
-//                locationAnnotation.title = offer.address
-//
-//                mapView.addAnnotation(locationAnnotation)
-//            }
             
         } else {
             isOfferEditing = false
@@ -90,11 +78,20 @@ class EditOfferTableViewController: UITableViewController {
             offer.price = priceTextField.text!
             offer.categories = getSelectedCategoriesList()
             
+            if let location = selectedLocation, let lat = selectedLocation?.latitude, let lng = selectedLocation?.longitude {
+                offer.address = location.description
+                offer.coordinates = [lat, lng]
+            }
+            
             url = URL(string: Constants.api + "/\(Constants.offerService)/" + offer._id!)
             request = URLRequest(url: url!)
             request?.httpMethod = "PATCH"
         } else {
-            offer = Offer(nil, title: titleTextField.text!, description: descriptionTextView.text!, price: priceTextField.text!, categories: getSelectedCategoriesList(), owner: (AuthManager.manager.getSignedInUser()?._id)!, images: [], address: nil, coordinates: nil, createdAt: Date(), updatedAt: Date())
+            offer = Offer(nil, title: titleTextField.text!, description: descriptionTextView.text!, price: priceTextField.text!, categories: getSelectedCategoriesList(), owner: (AuthManager.manager.getSignedInUser()?._id)!, images: [], address: selectedLocation?.description, coordinates: nil, createdAt: Date(), updatedAt: Date())
+            
+            if let lat = selectedLocation?.latitude, let lng = selectedLocation?.longitude {
+                offer?.coordinates = [lat, lng]
+            }
             
             url = URL(string: Constants.api + "/\(Constants.offerService)")
             request = URLRequest(url: url!)
@@ -252,6 +249,9 @@ class EditOfferTableViewController: UITableViewController {
         if segue.identifier == "NewOfferCategorySelectorSegue" {
             let vc = segue.destination as? CategorySelectorViewController
             vc?.selectedCategories = self.selectedCategories
+            vc?.parentEditOfferVC = self
+        } else if segue.identifier == "EditOfferSearchLocationSegue" {
+            let vc = segue.destination as? LocationSearchTableViewController
             vc?.parentEditOfferVC = self
         }
     }

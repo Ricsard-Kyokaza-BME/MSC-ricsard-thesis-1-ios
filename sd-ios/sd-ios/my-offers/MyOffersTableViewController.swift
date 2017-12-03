@@ -21,32 +21,37 @@ class MyOffersTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        feathers = (UIApplication.shared.delegate as! AppDelegate).feathersRestApp
-        let offerService = feathers!.service(path: Constants.offerService)
-        print(AuthManager.manager.getSignedInUser()!._id)
-        let query = Query().eq(property: "owner", value: AuthManager.manager.getSignedInUser()!._id).limit(100)
-        
-        offerService.request(.find(query: query))
-            .on(value: { response in
-                self.offers = []
-                
-                let jsonDecoder = JSONDecoder()
-                
-                for offer in response.data.value as! Array<[String: Any]> {
-                    do {
-                        let jsonData = try JSONSerialization.data(withJSONObject: offer, options: JSONSerialization.WritingOptions(rawValue: 0))
-                        jsonDecoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
-                        
-                        let newOffer = try jsonDecoder.decode(Offer.self, from: jsonData)
-                        self.offers.append(newOffer)
-                    } catch {
-                        print(error)
+        if(!AuthManager.manager.isSignedIn) {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+            present(vc, animated: false, completion: nil)
+        } else {
+            feathers = (UIApplication.shared.delegate as! AppDelegate).feathersRestApp
+            let offerService = feathers!.service(path: Constants.offerService)
+            print(AuthManager.manager.getSignedInUser()!._id)
+            let query = Query().eq(property: "owner", value: AuthManager.manager.getSignedInUser()!._id).limit(100)
+            
+            offerService.request(.find(query: query))
+                .on(value: { response in
+                    self.offers = []
+                    
+                    let jsonDecoder = JSONDecoder()
+                    
+                    for offer in response.data.value as! Array<[String: Any]> {
+                        do {
+                            let jsonData = try JSONSerialization.data(withJSONObject: offer, options: JSONSerialization.WritingOptions(rawValue: 0))
+                            jsonDecoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
+                            
+                            let newOffer = try jsonDecoder.decode(Offer.self, from: jsonData)
+                            self.offers.append(newOffer)
+                        } catch {
+                            print(error)
+                        }
                     }
-                }
-                
-                self.tableView.reloadData()
-            })
-            .start()
+                    
+                    self.tableView.reloadData()
+                })
+                .start()
+        }
     }
 
     // MARK: - Table view data source
@@ -96,8 +101,6 @@ class MyOffersTableViewController: UITableViewController {
             let vc = segue.destination as? EditOfferTableViewController
             let section = tableView.indexPathForSelectedRow?.section
             vc?.offer = offers[section!]
-        } else if segue.identifier == "AddNewOfferSegue" {
-            let vc = segue.destination as? EditOfferTableViewController
         }
     }
 

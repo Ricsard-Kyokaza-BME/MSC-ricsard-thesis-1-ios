@@ -37,6 +37,6 @@ class Offer: Codable, CustomDebugStringConvertible {
     }
     
     var debugDescription: String {
-        return "Offer: \nid: \(_id), title: \(title), description: \(String(describing: description)), price: \(String(describing: price)), categories: \(String(describing: categories)), owner: \(owner), images: \(String(describing: images)), address: \(String(describing: address)), coordinates: \(String(describing: coordinates)), createdAt: \(String(describing: createdAt)), updatedAt: \(String(describing: updatedAt))"
+        return "Offer: \nid: \(String(describing: _id)), title: \(title), description: \(String(describing: description)), price: \(String(describing: price)), categories: \(String(describing: categories)), owner: \(owner), images: \(String(describing: images)), address: \(String(describing: address)), coordinates: \(String(describing: coordinates)), createdAt: \(String(describing: createdAt)), updatedAt: \(String(describing: updatedAt))"
     }
 }

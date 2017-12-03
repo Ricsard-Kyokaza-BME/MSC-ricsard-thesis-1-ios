@@ -39,7 +39,7 @@ class AuthManager {
             ]).on(value: { response in
                 if response["accessToken"] != nil {
                     do {
-                        self.accessToken = response["accessToken"] as! String
+                        self.accessToken = (response["accessToken"] as! String)
                         let jwt = try decode(jwt: response["accessToken"] as! String)
                         self.requestSignedInUser(jwt.body["userId"] as! String)
                     } catch {

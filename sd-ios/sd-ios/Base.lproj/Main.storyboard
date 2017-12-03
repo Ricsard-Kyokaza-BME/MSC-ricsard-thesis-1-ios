@@ -382,20 +382,20 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Action" id="y3m-HK-nKo">
+                            <tableViewSection headerTitle="Location" id="y3m-HK-nKo">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bRO-CA-A6J">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bRO-CA-A6J">
                                         <rect key="frame" x="0.0" y="580" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bRO-CA-A6J" id="031-Kt-zNy">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8X4-EQ-xRX">
                                                     <rect key="frame" x="20" y="6" width="280" height="30"/>
-                                                    <state key="normal" title="Delete"/>
+                                                    <state key="normal" title="Search for location"/>
                                                     <connections>
-                                                        <action selector="deleteClick:" destination="gTk-2U-LQG" eventType="touchUpInside" id="rjQ-Sf-e0B"/>
+                                                        <segue destination="qYI-3Z-d7n" kind="show" identifier="EditOfferSearchLocationSegue" id="FbL-BD-7Kz"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -403,6 +403,32 @@
                                                 <constraint firstItem="8X4-EQ-xRX" firstAttribute="top" secondItem="031-Kt-zNy" secondAttribute="top" constant="6" id="M7L-78-jec"/>
                                                 <constraint firstAttribute="trailing" secondItem="8X4-EQ-xRX" secondAttribute="trailing" constant="20" symbolic="YES" id="QIO-f3-VEJ"/>
                                                 <constraint firstItem="8X4-EQ-xRX" firstAttribute="leading" secondItem="031-Kt-zNy" secondAttribute="leading" constant="20" symbolic="YES" id="cQO-au-PJV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Action" id="Ep0-Wy-oL2">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pja-92-Urk">
+                                        <rect key="frame" x="0.0" y="652" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pja-92-Urk" id="XGO-0o-a8s">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLR-hd-doF">
+                                                    <rect key="frame" x="20" y="6" width="280" height="30"/>
+                                                    <state key="normal" title="Delete"/>
+                                                    <connections>
+                                                        <action selector="deleteClick:" destination="gTk-2U-LQG" eventType="touchUpInside" id="guw-1Z-Ndb"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="hLR-hd-doF" secondAttribute="trailing" constant="20" symbolic="YES" id="NyZ-bE-Jxd"/>
+                                                <constraint firstItem="hLR-hd-doF" firstAttribute="top" secondItem="XGO-0o-a8s" secondAttribute="top" constant="6" id="ZCd-3M-nu5"/>
+                                                <constraint firstItem="hLR-hd-doF" firstAttribute="leading" secondItem="XGO-0o-a8s" secondAttribute="leading" constant="20" symbolic="YES" id="gld-Oy-hFR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -429,6 +455,51 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3481.875" y="119.36619718309859"/>
+        </scene>
+        <!--Location Search Table View Controller-->
+        <scene sceneID="KxU-Xj-Aq6">
+            <objects>
+                <tableViewController id="qYI-3Z-d7n" customClass="LocationSearchTableViewController" customModule="sd_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bIM-rG-eUs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Enter address" id="DJG-07-PJF">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationSearchResultCell" textLabel="n1q-xJ-UK8" style="IBUITableViewCellStyleDefault" id="9Eb-7f-Kar">
+                                <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Eb-7f-Kar" id="QiD-aN-yUz">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n1q-xJ-UK8">
+                                            <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qYI-3Z-d7n" id="LJJ-FZ-8MF"/>
+                            <outlet property="delegate" destination="qYI-3Z-d7n" id="U6h-mG-Pnl"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="searchBar" destination="DJG-07-PJF" id="tsE-Tw-hsA"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WBP-WT-Vw4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4682" y="120"/>
         </scene>
         <!--My Offers-->
         <scene sceneID="NiY-OK-6RP">

@@ -9,10 +9,10 @@
 import UIKit
 
 struct Constants {
-    static let api = "http://localhost:3030/api"
-//    static let api = "https://dev-balogotthon.ddns.net/api"
-//    static let fileServer = "https://balogotthon.ddns.net/file-server/"
-    static let fileServer = "http://localhost:3000/"
+//    static let api = "http://localhost:3030/api"
+    static let api = "https://dev-balogotthon.ddns.net/api"
+    static let fileServer = "https://balogotthon.ddns.net/file-server/"
+//    static let fileServer = "http://localhost:3000/"
     static let userService = "users"
     static let offerService = "offers"
     static let categoryService = "categories"
