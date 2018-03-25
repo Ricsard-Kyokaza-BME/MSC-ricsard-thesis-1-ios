@@ -12,14 +12,14 @@ class Message: Codable, CustomDebugStringConvertible {
     
     var __v: Int
     var _id: String
-    var from: String
+    var from: User
     var to: String
     var content: String
     
     var createdAt: Date
     var updatedAt: Date
     
-    init(_ __v: Int, id: String, from: String, to: String, content: String, createdAt: Date, updatedAt: Date ) {
+    init(_ __v: Int, id: String, from: User, to: String, content: String, createdAt: Date, updatedAt: Date ) {
         self.__v = __v
         self._id = id
         self.from = from

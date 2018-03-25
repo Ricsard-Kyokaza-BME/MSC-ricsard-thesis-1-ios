@@ -25,5 +25,5 @@ class PagerWrapper<T: Codable>: Codable, CustomDebugStringConvertible {
     var debugDescription: String {
         return "User: \ndata: \(data), limit: \(limit), skip: \(skip), total: \(total)"
     }
-    
+        
 }

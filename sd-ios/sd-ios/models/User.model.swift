@@ -35,12 +35,16 @@ class User: Codable, CustomDebugStringConvertible {
         return "User: \nid: \(_id), firstName: \(firstName), lastName: \(lastName), email: \(email), roles: \(roles), createdAt: \(String(describing: createdAt)), updatedAt: \(String(describing: updatedAt))"
     }
     
-        func toData() -> [String: Any] {
-            var dictionary = [String: Any]()
+    func toData() -> [String: Any] {
+        var dictionary = [String: Any]()
+
+        dictionary["firstName"] = firstName
+        dictionary["lastName"] = lastName
+
+        return dictionary
+    }
     
-            dictionary["firstName"] = firstName
-            dictionary["lastName"] = lastName
-    
-            return dictionary
-        }
+    func getName() -> String {
+        return "\(firstName) \(lastName)"
+    }
 }
