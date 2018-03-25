@@ -21,6 +21,10 @@ class MyOffersTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        let tempImageView = UIImageView(image: UIImage(named: "bg"))
+        tempImageView.frame = self.tableView.frame
+        self.tableView.backgroundView = tempImageView;
+        
         if(!AuthManager.manager.isSignedIn) {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
             present(vc, animated: false, completion: nil)
@@ -82,16 +86,19 @@ class MyOffersTableViewController: UITableViewController {
             cell.price?.text = price + " Ft"
         }
         
-        cell.backgroundColor = UIColor.white
-        cell.tintColor = Constants.primaryColor
-        cell.layer.borderColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.15).cgColor
+        cell.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.7)
+        cell.layer.borderColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1).cgColor
         cell.layer.borderWidth = 1
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 5
+        return 20
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 326
     }
     
     //   MARK: - Navigation

@@ -16,6 +16,7 @@ struct Constants {
     static let userService = "users"
     static let offerService = "offers"
     static let categoryService = "categories"
+    static let messageService = "messages"
     
     static let primaryColor = UIColor(red: 97.0/255.0, green: 191.0/255.0, blue: 172.0/255.0, alpha: 1.0)
 }

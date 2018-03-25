@@ -55,7 +55,7 @@ class MeViewController: UITableViewController {
             
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
-                    print("Error during comminication: \(error.localizedDescription).")
+                    print("Error during communication: \(error.localizedDescription).")
                     return
                 } else if data != nil {
                     DispatchQueue.main.async {

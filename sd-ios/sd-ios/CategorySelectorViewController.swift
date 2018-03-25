@@ -30,6 +30,8 @@ class CategorySelectorViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "Filter categories"
+        
         let categoryService = feathers.service(path: Constants.categoryService)
         let query = Query().limit(100)
         
