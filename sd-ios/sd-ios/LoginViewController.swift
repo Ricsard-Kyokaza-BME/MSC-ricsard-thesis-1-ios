@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = Constants.primaryColor
+        //view.backgroundColor = Constants.primaryColor
     }
     
     @IBAction func loginTouchUpInside(_ sender: Any) {

@@ -13,13 +13,13 @@ class Message: Codable, CustomDebugStringConvertible {
     var __v: Int
     var _id: String
     var from: User
-    var to: String
+    var to: User
     var content: String
     
     var createdAt: Date
     var updatedAt: Date
     
-    init(_ __v: Int, id: String, from: User, to: String, content: String, createdAt: Date, updatedAt: Date ) {
+    init(_ __v: Int, id: String, from: User, to: User, content: String, createdAt: Date, updatedAt: Date ) {
         self.__v = __v
         self._id = id
         self.from = from
@@ -30,7 +30,7 @@ class Message: Codable, CustomDebugStringConvertible {
     }
     
     var debugDescription: String {
-        return "User: \nid: \(_id), from: \(from), to: \(to), content: \(String(describing: content)), createdAt: \(String(describing: createdAt)), updatedAt: \(String(describing: updatedAt))"
+        return "Message: \nid: \(_id), from: \(from), to: \(to), content: \(String(describing: content)), createdAt: \(String(describing: createdAt)), updatedAt: \(String(describing: updatedAt))"
     }
     
 }

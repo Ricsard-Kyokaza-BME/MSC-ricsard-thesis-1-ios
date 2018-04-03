@@ -10,18 +10,6 @@ import UIKit
 import Feathers
 import FeathersSwiftRest
 
-class GrouppedMessage {
-    var groupId: String
-    var otherPartnerName: String
-    var messages: [Message]
-    
-    init(_ groupId: String, otherPartnerName: String, messages: [Message]) {
-        self.groupId = groupId
-        self.otherPartnerName = otherPartnerName
-        self.messages = messages
-    }
-}
-
 class MessagesListTableViewController: UITableViewController {
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -64,7 +52,7 @@ class MessagesListTableViewController: UITableViewController {
     
     func downloadMessages() {
         let userId = signedInUser!._id
-        let url = URL(string: Constants.api + "/messages" + "?$limit=100&$or[0][to]=\(userId)&$or[1][from]=\(userId)&$populate=from")
+        let url = URL(string: Constants.api + "/messages" + "?$limit=100&$or[0][to]=\(userId)&$or[1][from]=\(userId)&$populate=from&$populate=to")
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -119,10 +107,10 @@ class MessagesListTableViewController: UITableViewController {
     func groupMessages() {
         messages.forEach({ message in
             if message.from._id == signedInUser!._id {
-                if grouppedMessageFindByGroupId(message.to) == nil {
-                    grouppedMessages.append(GrouppedMessage(message.to, otherPartnerName: message.to, messages: [message]))
+                if grouppedMessageFindByGroupId(message.to._id) == nil {
+                    grouppedMessages.append(GrouppedMessage(message.to._id, otherPartnerName: message.to.getName(), messages: [message]))
                 } else {
-                    grouppedMessageFindByGroupId(message.to)?.messages.append(message)
+                    grouppedMessageFindByGroupId(message.to._id)?.messages.append(message)
                 }
             } else if grouppedMessageFindByGroupId(message.from._id) == nil {
                 grouppedMessages.append(GrouppedMessage(message.from._id, otherPartnerName: message.from.getName(), messages: [message]))
@@ -144,14 +132,15 @@ class MessagesListTableViewController: UITableViewController {
         return returnGrouppedMessage;
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ConversationDetailSegue" {
+            let vc = segue.destination as? MessageTableViewController
+            let row = tableView.indexPathForSelectedRow?.row
+            vc?.grouppedMessage = grouppedMessages[row!]
+        }
     }
-    */
 
 }

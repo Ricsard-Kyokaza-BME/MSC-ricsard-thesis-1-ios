@@ -21,6 +21,8 @@
 		F33F23F72067A8F400B7E4B4 /* MessagesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33F23F62067A8F400B7E4B4 /* MessagesListTableViewController.swift */; };
 		F33F23F92067BE1000B7E4B4 /* Message.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33F23F82067BE1000B7E4B4 /* Message.model.swift */; };
 		F33F23FD2067C80400B7E4B4 /* PagerWrapper.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33F23FC2067C80400B7E4B4 /* PagerWrapper.model.swift */; };
+		F34D11BD2071220900037331 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34D11BC2071220900037331 /* MessageTableViewController.swift */; };
+		F34D11BF2071246800037331 /* GrouppedMessage.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34D11BE2071246800037331 /* GrouppedMessage.model.swift */; };
 		F363E23A1FD3E60000A4C280 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F363E2391FD3E60000A4C280 /* LocationSearchTableViewController.swift */; };
 		F363E23C1FD406F000A4C280 /* SelectedLocation.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F363E23B1FD406F000A4C280 /* SelectedLocation.model.swift */; };
 		F3BCE9231FC1875F00E335AC /* OfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BCE9221FC1875F00E335AC /* OfferDetailViewController.swift */; };
@@ -55,6 +57,8 @@
 		F33F23F62067A8F400B7E4B4 /* MessagesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesListTableViewController.swift; sourceTree = "<group>"; };
 		F33F23F82067BE1000B7E4B4 /* Message.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.model.swift; sourceTree = "<group>"; };
 		F33F23FC2067C80400B7E4B4 /* PagerWrapper.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerWrapper.model.swift; sourceTree = "<group>"; };
+		F34D11BC2071220900037331 /* MessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
+		F34D11BE2071246800037331 /* GrouppedMessage.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrouppedMessage.model.swift; sourceTree = "<group>"; };
 		F363E2391FD3E60000A4C280 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		F363E23B1FD406F000A4C280 /* SelectedLocation.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedLocation.model.swift; sourceTree = "<group>"; };
 		F3BCE9221FC1875F00E335AC /* OfferDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				F33F23F62067A8F400B7E4B4 /* MessagesListTableViewController.swift */,
+				F34D11BC2071220900037331 /* MessageTableViewController.swift */,
 			);
 			path = messages;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 				F32CFC111FCC97A100410B32 /* User.model.swift */,
 				F3CB5AE81FD3170D00F0299E /* Category.model.swift */,
 				F33F23F82067BE1000B7E4B4 /* Message.model.swift */,
+				F34D11BE2071246800037331 /* GrouppedMessage.model.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 				F33F23F72067A8F400B7E4B4 /* MessagesListTableViewController.swift in Sources */,
 				F363E23A1FD3E60000A4C280 /* LocationSearchTableViewController.swift in Sources */,
 				F32CFC121FCC97A100410B32 /* User.model.swift in Sources */,
+				F34D11BF2071246800037331 /* GrouppedMessage.model.swift in Sources */,
 				F3C89C6B1FD2ACED00537A93 /* MyOffersTableViewCell.swift in Sources */,
 				F3371E1B1FBD9FAB0038FB26 /* sd_ios.xcdatamodeld in Sources */,
 				F33F23F92067BE1000B7E4B4 /* Message.model.swift in Sources */,
@@ -356,6 +363,7 @@
 				F3FA51011FC5F671006314BD /* Constants.swift in Sources */,
 				F3CB5AE71FD316FD00F0299E /* CategorySelectorViewController.swift in Sources */,
 				F3073E081FD2A29B0057436C /* MyOffersTableViewController.swift in Sources */,
+				F34D11BD2071220900037331 /* MessageTableViewController.swift in Sources */,
 				F3FA51031FC5FD0B006314BD /* AuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
