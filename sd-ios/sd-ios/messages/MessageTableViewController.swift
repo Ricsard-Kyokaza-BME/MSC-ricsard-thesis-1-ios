@@ -21,6 +21,7 @@ class MessageTableViewController: UITableViewController {
                 self.signedInUser = signedInUser
             }
         }
+        
     }
     
     override func viewDidLoad() {
